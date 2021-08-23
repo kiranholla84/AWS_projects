@@ -1,0 +1,29 @@
+Note to the user
+
+o	Project Workflow
+
+Yahoo API -> EC2 -> Kinesis -> Lambda ->SNS & DynamoDB
+
+o	Manual AWS actions required prior to running the script 
+(If you do not want to do this , look at my other project Stock_price_anomaly_yfinance_python_aws_cloudformation"
+
+- Create EC2 linux instance and install python, yfinance, pandas
+- Create basic kinesis stream of 1 shard
+- Copy the StockPriceInjestion.py into the EC2 machine and ensure it runs
+- Create role for EC2 in AWS to talk with Kinesis
+- Create role for Lambda in AWS to talk with Kinesis, SNS, DynamoDB
+- Create lambda function and copy the content of lambda_function.py into the created lambda function
+- Add trigger as Kinesis for Lambda function
+- Create an SNS subscription and dynamoDB table as mentioned in the script lambda_function.py
+- Observe the anomaly data coming into your email (via SNS) and getting populated in the dynamoDB table
+
+o	The script StockpriceInjestion does the below for you
+
+> Extracts historical finance data using python and yahoo finance API in EC2
+> Cleans and formatted the data using Pandas
+> Streams data to AWS streaming solution – Kinesis
+
+o	The script lambda_function.py does the below
+> Python code to detect anomalies
+> Notification of anomalies to user using SNS 
+> Addition of anomaly data into AWS dynamo DB
