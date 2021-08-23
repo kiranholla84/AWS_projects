@@ -16,6 +16,7 @@ o	Manual AWS actions required prior to running the script
 - Add trigger as Kinesis for Lambda function
 - Create an SNS subscription and dynamoDB table as mentioned in the script lambda_function.py
 - Observe the anomaly data coming into your email (via SNS) and getting populated in the dynamoDB table
+- Fill up the "blanks" in the code where it is mentioned "Enter your.."
 
 o	The script StockpriceInjestion does the below for you
 
