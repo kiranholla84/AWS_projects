@@ -11,9 +11,9 @@ import base64
 
 def lambda_handler(event, context):
     dynamodb_res = boto3.resource('dynamodb', region_name='us-east-1')
-    table = dynamodb_res.Table('m3_project1_KiranSridhar')
+    table = dynamodb_res.Table('<Enter your dynamodDbTableName>')
     sns_client = boto3.client('sns', region_name='us-east-1')
-    topic_arn = "arn:aws:sns:us-east-1:174850484977:dynamodb"
+    topic_arn = "arn:aws:sns:us-east-1:<Enter your username>:dynamodb"
 
     #print("TEST event is\n===========================================================\n", event)
     for record in event['Records']:
